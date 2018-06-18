@@ -21,8 +21,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Created by amitshekhar on 07/07/17.
+ */
 
-public class OpenSourceResponse {
+public class JokeApiModel {
 
     @Expose
     @SerializedName("data")
@@ -41,11 +44,11 @@ public class OpenSourceResponse {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof OpenSourceResponse)) {
+        if (!(o instanceof JokeApiModel)) {
             return false;
         }
 
-        OpenSourceResponse that = (OpenSourceResponse) o;
+        JokeApiModel that = (JokeApiModel) o;
 
         if (!statusCode.equals(that.statusCode)) {
             return false;

@@ -24,6 +24,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mindorks.framework.mvvm.data.local.db.DbHelper;
 import com.mindorks.framework.mvvm.data.local.prefs.PreferencesHelper;
 import com.mindorks.framework.mvvm.data.model.api.BlogResponse;
+import com.mindorks.framework.mvvm.data.model.api.JokeApiModel;
 import com.mindorks.framework.mvvm.data.model.api.LoginRequest;
 import com.mindorks.framework.mvvm.data.model.api.LoginResponse;
 import com.mindorks.framework.mvvm.data.model.api.LogoutResponse;
@@ -91,6 +92,8 @@ public class AppDataManager implements DataManager {
         return mApiHelper.doServerLoginApiCall(request);
     }
 
+
+
     @Override
     public String getAccessToken() {
         return mPreferencesHelper.getAccessToken();
@@ -121,6 +124,14 @@ public class AppDataManager implements DataManager {
     public Single<BlogResponse> getBlogApiCall() {
         return mApiHelper.getBlogApiCall();
     }
+
+
+    @Override
+    public Single<OpenSourceResponse> getDadJokesApiCall() {
+        return mApiHelper.getDadJokesApiCall();
+    }
+
+
 
     @Override
     public String getCurrentUserEmail() {

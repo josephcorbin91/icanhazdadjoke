@@ -19,6 +19,7 @@ package com.mindorks.framework.mvvm.ui.feed.opensource;
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
+import android.util.Log;
 
 import com.mindorks.framework.mvvm.data.DataManager;
 import com.mindorks.framework.mvvm.data.model.api.OpenSourceResponse;
@@ -62,6 +63,7 @@ public class OpenSourceViewModel extends BaseViewModel<OpenSourceNavigator> {
                     }
                     setIsLoading(false);
                 }, throwable -> {
+                    Log.e("Error from call ",throwable.getLocalizedMessage());
                     setIsLoading(false);
                     getNavigator().handleError(throwable);
                 }));

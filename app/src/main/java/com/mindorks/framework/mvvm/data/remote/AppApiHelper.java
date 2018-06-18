@@ -97,4 +97,14 @@ public class AppApiHelper implements ApiHelper {
                 .build()
                 .getObjectSingle(OpenSourceResponse.class);
     }
+
+
+
+    @Override
+    public Single<OpenSourceResponse> getDadJokesApiCall() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_DAD_JOKES)
+                .addHeaders("Accept","application/json")
+                .build()
+                .getObjectSingle(OpenSourceResponse.class);
+    }
 }

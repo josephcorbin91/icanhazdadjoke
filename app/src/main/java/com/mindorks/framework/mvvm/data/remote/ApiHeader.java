@@ -59,6 +59,10 @@ public class ApiHeader {
         private String mApiKey;
 
         @Expose
+        @SerializedName("Accept")
+        private String mAccept;
+
+        @Expose
         @SerializedName("user_id")
         private Long mUserId;
 
@@ -67,6 +71,9 @@ public class ApiHeader {
             this.mUserId = mUserId;
             this.mAccessToken = mAccessToken;
         }
+
+
+
 
         public String getAccessToken() {
             return mAccessToken;

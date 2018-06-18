@@ -17,6 +17,7 @@
 package com.mindorks.framework.mvvm.data.remote;
 
 import com.mindorks.framework.mvvm.data.model.api.BlogResponse;
+import com.mindorks.framework.mvvm.data.model.api.JokeApiModel;
 import com.mindorks.framework.mvvm.data.model.api.LoginRequest;
 import com.mindorks.framework.mvvm.data.model.api.LoginResponse;
 import com.mindorks.framework.mvvm.data.model.api.LogoutResponse;
@@ -36,6 +37,9 @@ public interface ApiHelper {
 
     Single<LogoutResponse> doLogoutApiCall();
 
+
+
+
     Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request);
 
     ApiHeader getApiHeader();
@@ -43,4 +47,9 @@ public interface ApiHelper {
     Single<BlogResponse> getBlogApiCall();
 
     Single<OpenSourceResponse> getOpenSourceApiCall();
+
+    Single<OpenSourceResponse> getDadJokesApiCall();
+
+
+
 }
