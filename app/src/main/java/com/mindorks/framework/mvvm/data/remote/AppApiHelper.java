@@ -17,6 +17,7 @@
 package com.mindorks.framework.mvvm.data.remote;
 
 import com.mindorks.framework.mvvm.data.model.api.BlogResponse;
+import com.mindorks.framework.mvvm.data.model.api.JokeResponse;
 import com.mindorks.framework.mvvm.data.model.api.LoginRequest;
 import com.mindorks.framework.mvvm.data.model.api.LoginResponse;
 import com.mindorks.framework.mvvm.data.model.api.LogoutResponse;
@@ -101,10 +102,10 @@ public class AppApiHelper implements ApiHelper {
 
 
     @Override
-    public Single<OpenSourceResponse> getDadJokesApiCall() {
+    public Single<JokeResponse> getDadJokesApiCall() {
         return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_DAD_JOKES)
                 .addHeaders("Accept","application/json")
                 .build()
-                .getObjectSingle(OpenSourceResponse.class);
+                .getObjectSingle(JokeResponse.class);
     }
 }

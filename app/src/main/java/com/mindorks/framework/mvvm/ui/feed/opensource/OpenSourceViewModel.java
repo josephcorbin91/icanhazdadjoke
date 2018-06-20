@@ -54,12 +54,15 @@ public class OpenSourceViewModel extends BaseViewModel<OpenSourceNavigator> {
     public void fetchRepos() {
         setIsLoading(true);
         getCompositeDisposable().add(getDataManager()
-                .getOpenSourceApiCall()
+                .getDadJokesApiCall()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(openSourceResponse -> {
-                    if (openSourceResponse != null && openSourceResponse.getData() != null) {
-                        openSourceItemsLiveData.setValue(getViewModelList(openSourceResponse.getData()));
+                .subscribe(jokeResponse -> {
+                    if (jokeResponse != null && jokeResponse.getJoke() != null) {
+
+
+                        /*TODO must set view modelopenSourceItemsLiveData.setValue(getViewModelList(jokeResponse.getJoke()));
+                    */
                     }
                     setIsLoading(false);
                 }, throwable -> {
@@ -78,12 +81,18 @@ public class OpenSourceViewModel extends BaseViewModel<OpenSourceNavigator> {
     }
 
     public List<OpenSourceItemViewModel> getViewModelList(List<OpenSourceResponse.Repo> repoList) {
+
+
         List<OpenSourceItemViewModel> openSourceItemViewModels = new ArrayList<>();
+
         for (OpenSourceResponse.Repo repo : repoList) {
             openSourceItemViewModels.add(new OpenSourceItemViewModel(
                     repo.getCoverImgUrl(), repo.getTitle(),
                     repo.getDescription(), repo.getProjectUrl()));
         }
         return openSourceItemViewModels;
+
+
+
     }
 }
