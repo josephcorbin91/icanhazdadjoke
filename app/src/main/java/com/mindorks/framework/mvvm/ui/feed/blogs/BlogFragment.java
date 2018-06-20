@@ -28,6 +28,7 @@ import android.view.View;
 import com.mindorks.framework.mvvm.BR;
 import com.mindorks.framework.mvvm.R;
 import com.mindorks.framework.mvvm.data.model.api.BlogResponse;
+import com.mindorks.framework.mvvm.data.model.api.JokeResponse;
 import com.mindorks.framework.mvvm.databinding.FragmentBlogBinding;
 import com.mindorks.framework.mvvm.ui.base.BaseFragment;
 
@@ -100,7 +101,7 @@ public class BlogFragment extends BaseFragment<FragmentBlogBinding, BlogViewMode
     }
 
     @Override
-    public void updateBlog(List<BlogResponse.Blog> blogList) {
+    public void updateBlog(List<JokeResponse.Joke> blogList) {
         mBlogAdapter.addItems(blogList);
     }
 

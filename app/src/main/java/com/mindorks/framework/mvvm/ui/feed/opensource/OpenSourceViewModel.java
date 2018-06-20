@@ -22,6 +22,7 @@ import android.databinding.ObservableList;
 import android.util.Log;
 
 import com.mindorks.framework.mvvm.data.DataManager;
+import com.mindorks.framework.mvvm.data.model.api.JokeResponse;
 import com.mindorks.framework.mvvm.data.model.api.OpenSourceResponse;
 import com.mindorks.framework.mvvm.ui.base.BaseViewModel;
 import com.mindorks.framework.mvvm.utils.rx.SchedulerProvider;
@@ -58,11 +59,11 @@ public class OpenSourceViewModel extends BaseViewModel<OpenSourceNavigator> {
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(jokeResponse -> {
-                    if (jokeResponse != null && jokeResponse.getJoke() != null) {
+                    if (jokeResponse != null && jokeResponse.getData() != null) {
 
 
-                        /*TODO must set view modelopenSourceItemsLiveData.setValue(getViewModelList(jokeResponse.getJoke()));
-                    */
+                       openSourceItemsLiveData.setValue(getViewModelList(jokeResponse.getData()));
+
                     }
                     setIsLoading(false);
                 }, throwable -> {
@@ -80,16 +81,15 @@ public class OpenSourceViewModel extends BaseViewModel<OpenSourceNavigator> {
         return openSourceItemsLiveData;
     }
 
-    public List<OpenSourceItemViewModel> getViewModelList(List<OpenSourceResponse.Repo> repoList) {
+    public List<OpenSourceItemViewModel> getViewModelList(List<JokeResponse.Joke> jokes) {
 
 
+        System.out.println("Joke "+jokes);
         List<OpenSourceItemViewModel> openSourceItemViewModels = new ArrayList<>();
 
-        for (OpenSourceResponse.Repo repo : repoList) {
-            openSourceItemViewModels.add(new OpenSourceItemViewModel(
-                    repo.getCoverImgUrl(), repo.getTitle(),
-                    repo.getDescription(), repo.getProjectUrl()));
-        }
+        for(JokeResponse.Joke joke : jokes)
+        openSourceItemViewModels.add(new OpenSourceItemViewModel(joke.getJoke()));
+
         return openSourceItemViewModels;
 
 

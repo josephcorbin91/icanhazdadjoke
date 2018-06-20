@@ -50,4 +50,10 @@ public class SplashViewModel extends BaseViewModel<SplashNavigator> {
             getNavigator().openMainActivity();
         }
     }
+
+
+    private void startPlayingVideo(){
+        //getNavigator().startPlayingVideo();
+
+    }
 }

@@ -108,4 +108,14 @@ public class AppApiHelper implements ApiHelper {
                 .build()
                 .getObjectSingle(JokeResponse.class);
     }
+
+
+
+    @Override
+    public Single<JokeResponse> searchJokesApiCall(String search) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_DAD_JOKES+"search?term="+search)
+                .addHeaders("Accept","application/json")
+                .build()
+                .getObjectSingle(JokeResponse.class);
+    }
 }

@@ -19,6 +19,8 @@ package com.mindorks.framework.mvvm.data.model.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by amitshekhar on 07/07/17.
  */
@@ -27,69 +29,53 @@ public class JokeResponse {
 
 
     @Expose
-    @SerializedName("id")
-    private String id;
+    @SerializedName("results")
+    private List<JokeResponse.Joke> data;
 
-    @Expose
-    @SerializedName("status")
-    private String statusCode;
 
-    @Expose
-    @SerializedName("joke")
-    private String joke;
-
-    public String getJoke() {
-        return joke;
+    public List<Joke> getData() {
+        return data;
     }
 
+    public static class Joke {
+
+        @Expose
+        @SerializedName("joke")
+        private String joke;
 
 
-    public String getStatusCode() {
-        return statusCode;
-    }
+        @Expose
+        @SerializedName("id")
+        private String id;
 
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (!(o instanceof Joke)) {
+                return false;
+            }
 
-    public void setJoke(String joke) {
-        this.joke = joke;
-    }
+            Joke that = (Joke) o;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+            if (!id.equals(that.id)) {
+                return false;
+            }
             return true;
-        }
-        if (!(o instanceof JokeResponse)) {
-            return false;
+
         }
 
-        JokeResponse that = (JokeResponse) o;
-
-        if (!statusCode.equals(that.statusCode)) {
-            return false;
+        @Override
+        public int hashCode() {
+            int result = this.id.hashCode();
+            return result;
         }
-        if (!id.equals(that.id)) {
-            return false;
+
+        public String getJoke() {
+            return joke;
         }
-        return true;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = statusCode.hashCode();
-        result = 31 * result + id.hashCode();
-        return result;
     }
 
 }

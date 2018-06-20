@@ -149,6 +149,8 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         public void onClick(View view) {
+
+            /*
             if (mOpenSourceResponseList.get(0).projectUrl.get() != null) {
                 try {
                     Intent intent = new Intent();
@@ -160,6 +162,7 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                     AppLogger.d("url error");
                 }
             }
+            */
         }
     }
 }

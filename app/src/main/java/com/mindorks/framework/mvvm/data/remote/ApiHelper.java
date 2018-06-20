@@ -49,6 +49,9 @@ public interface ApiHelper {
     Single<OpenSourceResponse> getOpenSourceApiCall();
 
     Single<JokeResponse> getDadJokesApiCall();
+    Single<JokeResponse> searchJokesApiCall(String search);
+
+
 
 
 

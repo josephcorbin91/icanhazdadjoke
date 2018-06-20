@@ -22,6 +22,7 @@ import android.databinding.ObservableList;
 
 import com.mindorks.framework.mvvm.data.DataManager;
 import com.mindorks.framework.mvvm.data.model.api.BlogResponse;
+import com.mindorks.framework.mvvm.data.model.api.JokeResponse;
 import com.mindorks.framework.mvvm.ui.base.BaseViewModel;
 import com.mindorks.framework.mvvm.utils.rx.SchedulerProvider;
 
@@ -35,7 +36,7 @@ public class BlogViewModel extends BaseViewModel<BlogNavigator> {
 
     public final ObservableList<BlogResponse.Blog> blogObservableArrayList = new ObservableArrayList<>();
 
-    private final MutableLiveData<List<BlogResponse.Blog>> blogListLiveData;
+    private final MutableLiveData<List<JokeResponse.Joke>> blogListLiveData;
 
     public BlogViewModel(DataManager dataManager,
                          SchedulerProvider schedulerProvider) {
@@ -52,7 +53,7 @@ public class BlogViewModel extends BaseViewModel<BlogNavigator> {
     public void fetchBlogs() {
         setIsLoading(true);
         getCompositeDisposable().add(getDataManager()
-                .getBlogApiCall()
+                .getDadJokesApiCall()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(blogResponse -> {
@@ -66,7 +67,7 @@ public class BlogViewModel extends BaseViewModel<BlogNavigator> {
                 }));
     }
 
-    public MutableLiveData<List<BlogResponse.Blog>> getBlogListLiveData() {
+    public MutableLiveData<List<JokeResponse.Joke>> getBlogListLiveData() {
         return blogListLiveData;
     }
 

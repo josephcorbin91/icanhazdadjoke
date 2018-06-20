@@ -117,8 +117,8 @@ public class FeedActivity extends BaseActivity<ActivityFeedBinding, FeedViewMode
 
         mActivityFeedBinding.feedViewPager.setAdapter(mPagerAdapter);
 
-        mActivityFeedBinding.tabLayout.addTab(mActivityFeedBinding.tabLayout.newTab().setText(getString(R.string.blog)));
-        mActivityFeedBinding.tabLayout.addTab(mActivityFeedBinding.tabLayout.newTab().setText(getString(R.string.open_source)));
+        mActivityFeedBinding.tabLayout.addTab(mActivityFeedBinding.tabLayout.newTab().setText("Search for jokes"));
+        mActivityFeedBinding.tabLayout.addTab(mActivityFeedBinding.tabLayout.newTab().setText("Virtual Reality Jokes"));
 
         mActivityFeedBinding.feedViewPager.setOffscreenPageLimit(mActivityFeedBinding.tabLayout.getTabCount());
 

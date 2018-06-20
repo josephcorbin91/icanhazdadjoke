@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.mindorks.framework.mvvm.data.model.api.BlogResponse;
+import com.mindorks.framework.mvvm.data.model.api.JokeResponse;
 import com.mindorks.framework.mvvm.databinding.ItemBlogEmptyViewBinding;
 import com.mindorks.framework.mvvm.databinding.ItemBlogViewBinding;
 import com.mindorks.framework.mvvm.ui.base.BaseViewHolder;
@@ -40,11 +41,11 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public static final int VIEW_TYPE_NORMAL = 1;
 
-    private List<BlogResponse.Blog> mBlogResponseList;
+    private List<JokeResponse.Joke> mBlogResponseList;
 
     private BlogAdapterListener mListener;
 
-    public BlogAdapter(List<BlogResponse.Blog> blogResponseList) {
+    public BlogAdapter(List<JokeResponse.Joke> blogResponseList) {
         this.mBlogResponseList = blogResponseList;
     }
 
@@ -86,7 +87,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
-    public void addItems(List<BlogResponse.Blog> blogList) {
+    public void addItems(List<JokeResponse.Joke> blogList) {
         mBlogResponseList.addAll(blogList);
         notifyDataSetChanged();
     }
@@ -117,8 +118,8 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         public void onBind(int position) {
-            final BlogResponse.Blog blog = mBlogResponseList.get(position);
-            mBlogItemViewModel = new BlogItemViewModel(blog, this);
+            final String content = mBlogResponseList.get(position).getJoke();
+            mBlogItemViewModel = new BlogItemViewModel(content, this);
             mBinding.setViewModel(mBlogItemViewModel);
 
             // Immediate Binding

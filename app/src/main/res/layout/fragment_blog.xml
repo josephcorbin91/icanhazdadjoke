@@ -37,6 +37,11 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
+            <include
+                android:id="@+id/toolbarDashboard"
+                layout="@layout/toolbar_explore_and_world_vote_fragment" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/blogRecyclerView"
                 android:layout_width="match_parent"

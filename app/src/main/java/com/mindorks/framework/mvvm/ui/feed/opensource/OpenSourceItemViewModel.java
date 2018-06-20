@@ -25,8 +25,12 @@ import android.databinding.ObservableField;
 public class OpenSourceItemViewModel {
 
     public final ObservableField<String> content = new ObservableField<>();
+    public OpenSourceItemViewModel(String content) {
+        this.content.set(content);
+    }
 
-    
+
+    /*
     public final ObservableField<String> imageUrl = new ObservableField<>();
 
     public final ObservableField<String> projectUrl = new ObservableField<>();
@@ -39,4 +43,5 @@ public class OpenSourceItemViewModel {
         this.content.set(content);
         this.projectUrl.set(projectUrl);
     }
+    */
 }
